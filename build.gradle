@@ -9,10 +9,13 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+//    mavenLocal()();
+    maven { url "file://D:/Program Files/mav/en/maven-repository" }
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
 }
 
 dependencies {
-    testCompile "junit:junit:4.12"
-    
+    testCompile "junit:junit:4.2"
+    compile "com.google.guava:guava:18.0"
+
 }

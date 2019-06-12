@@ -1,26 +1,5 @@
 package com.dtt.jdk8;
 
-@FunctionalInterface
-interface MyInterface {
-
-    //抽象方法
-    void test();
-
-    //Object里的方法不算抽象方法
-    String toString();
-
-    //默认实现方法
-    default void test2(){
-        System.out.println(1);
-    }
-
-    //静态方法
-    static void test3(){
-        System.out.println("2");
-    }
-
-}
-
 public class Test2{
 
     public void myTest(MyInterface myInterface){
@@ -56,3 +35,25 @@ public class Test2{
     }
 
 }
+
+@FunctionalInterface
+interface MyInterface {
+
+    //抽象方法
+    void test();
+
+    //Object里的方法不算抽象方法
+    String toString();
+
+    //默认实现方法
+    default void test2(){
+        System.out.println(1);
+    }
+
+    //静态方法
+    static void test3(){
+        System.out.println("2");
+    }
+
+}
+
