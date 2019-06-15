@@ -3,6 +3,7 @@ package com.dtt.jdk8;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * @author: dtt
@@ -38,6 +39,9 @@ public class Test3 {
 
         //并行流
         list.parallelStream();
+
+        Function<String, String> function = String::toUpperCase;
+        System.out.println();
     }
 }
 

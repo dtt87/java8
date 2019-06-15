@@ -10,12 +10,13 @@ targetCompatibility = 1.8
 
 repositories {
 //    mavenLocal()();
-    maven { url "file://D:/Program Files/mav/en/maven-repository" }
+//    maven { url "file://D:/Program Files/mav/en/maven-repository" }
     maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
 }
 
 dependencies {
     testCompile "junit:junit:4.2"
     compile "com.google.guava:guava:18.0"
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
 
 }
