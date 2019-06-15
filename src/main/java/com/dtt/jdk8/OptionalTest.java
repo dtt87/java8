@@ -21,14 +21,14 @@ public class OptionalTest {
         Optional<String> optional2 = Optional.empty();
 
         //之前思想的写法，不推荐
-        if (optional.isPresent()){
+        if (optional.isPresent()) {
             optional.get();
         }
         //正确写法，若存在
         optional.ifPresent(System.out::println);
         //若不存在
         optional2.orElse("world");
-        System.out.println(optional2.orElseGet(()->"nihao"));
+        System.out.println(optional2.orElseGet(() -> "nihao"));
 
         System.out.println("--------------");
 
@@ -45,11 +45,9 @@ public class OptionalTest {
         //构造optional容器
         Optional<Company> optionalCompany = Optional.ofNullable(company);
         //判断集合对象是否为空非常经典的写法
-        List<Employee> res = optionalCompany.map(i->i.getEmployees()).orElse(Collections.emptyList());
+        List<Employee> res = optionalCompany.map(i -> i.getEmployees()).orElse(Collections.emptyList());
 
         System.out.println(res);
-
-
 
 
     }

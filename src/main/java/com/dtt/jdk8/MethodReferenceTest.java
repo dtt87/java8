@@ -17,8 +17,6 @@ public class MethodReferenceTest {
     }
 
     public static void main(String[] args) {
-//        List<String> list = Arrays.asList("hello","world","hello world");
-//        list.forEach(System.out::println);
 
         Student student1 = new Student("zhangsan", 10);
         Student student2 = new Student("lisi", 90);
@@ -43,8 +41,12 @@ public class MethodReferenceTest {
 //        list.sort(new StudentComparator()::CompareStudentByName);
 //        list.forEach(i-> System.out.println(i.getName()));
 
-        //类调用实例方法引用
-        //相当于 sort(param1.CompareByScore(param2))
+        //
+        /**
+         * 类调用实例方法引用
+         * 相当于 list.sort((v1, v2)-> v1.CompareByScore(v2));
+         * 方法的调用者是sort第一个参数，后面的参数作为CompareByScore方法的入参
+         */
         list.sort(Student::CompareByScore);
         list.forEach(i -> System.out.println(i.getScore()));
 
