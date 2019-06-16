@@ -1,4 +1,4 @@
-package com.dtt.jdk8;
+package com.dtt.jdk8.lambda;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;

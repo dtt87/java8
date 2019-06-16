@@ -1,4 +1,4 @@
-package com.dtt.jdk8;
+package com.dtt.jdk8.lambda;
 
 public class Test2{
 

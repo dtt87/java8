@@ -1,4 +1,4 @@
-package com.dtt.jdk8;
+package com.dtt.jdk8.lambda;
 
 import com.dtt.jdk8.bean.Company;
 import com.dtt.jdk8.bean.Employee;
