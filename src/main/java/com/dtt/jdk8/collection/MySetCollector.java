@@ -6,6 +6,7 @@ import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
+import java.util.stream.Stream;
 
 public class MySetCollector<T> implements Collector<T, Set<T>, Set<T>> {
     @Override
@@ -27,6 +28,8 @@ public class MySetCollector<T> implements Collector<T, Set<T>, Set<T>> {
     public BinaryOperator<Set<T>> combiner() {
         System.out.println("combiner invoke");
         return (set1, set2) -> {
+            System.out.println("set1："+set1);
+
             set1.addAll(set2);
             return set1;
         };
@@ -47,7 +50,9 @@ public class MySetCollector<T> implements Collector<T, Set<T>, Set<T>> {
 
     public static void main(String[] args) {
         List<String> list = Arrays.asList("hello", "world", "welcome");
-        MySetCollector<String> mySetCollector = new MySetCollector<>();
+//        MySetCollector<String> mySetCollector = new MySetCollector<>();
         Set<String> set = list.stream().collect(new MySetCollector<>());
+        Stream<String> stream = list.stream();
+
     }
 }

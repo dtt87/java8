@@ -1,4 +1,4 @@
-package com.dtt.jdk8.stream;
+package com.dtt.jdk8.collection;
 
 import com.dtt.jdk8.bean.Student;
 

@@ -12,15 +12,18 @@ public class MySetToMapCollector<T> implements Collector<T, Set<T>, Map<T, T>> {
     @Override
     public Supplier<Set<T>> supplier() {
         System.out.println("supplier invoke");
-        return HashSet::new;
+//        return HashSet::new;
+        return ()->{
+            System.out.println("----------");
+            return new HashSet<>();};
     }
 
     @Override
     public BiConsumer<Set<T>, T> accumulator() {
         System.out.println("accumulator invoke");
-        return (set,item)->{
+        return (set, item) -> {
             set.add(item);
-            System.out.println("accumulator:" +set+"++"+ Thread.currentThread().getName());
+            System.out.println("accumulator:" + set + "， " + Thread.currentThread().getName());
         };
     }
 
@@ -28,7 +31,7 @@ public class MySetToMapCollector<T> implements Collector<T, Set<T>, Map<T, T>> {
     public BinaryOperator<Set<T>> combiner() {
         System.out.println("combiner invoke");
         return (set1, set2) -> {
-
+            System.out.println("set1："+set1);
             set1.addAll(set2);
             return set1;
         };
@@ -47,19 +50,18 @@ public class MySetToMapCollector<T> implements Collector<T, Set<T>, Map<T, T>> {
     @Override
     public Set<Characteristics> characteristics() {
         System.out.println("characteristics invoke");
-        return Collections.unmodifiableSet(EnumSet.of(Characteristics.UNORDERED,Characteristics.CONCURRENT));
+        return Collections.unmodifiableSet(EnumSet.of(Characteristics.UNORDERED, Characteristics.CONCURRENT));
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i <100;i++){
+        for (int i = 0; i < 100; i++) {
 
-            List<String> list = Arrays.asList("hello", "world", "welcome", "a", "c", "b", "e");
-//        Set<String> set = list.stream().collect(new MySetCollector<>());
-            Set<String> set = new HashSet<>();
-            set.addAll(list);
-            System.out.println("-----------");
-            Map<String, String> map = set.parallelStream().collect(new MySetToMapCollector<>());
-            System.out.println(map);
         }
+        List<String> list = Arrays.asList("hello", "world", "welcome", "a", "c", "b", "e");
+//        Set<String> set = list.stream().collect(new MySetCollector<>());
+        Set<String> set = new HashSet<>();
+        set.addAll(list);
+        Map<String, String> map = set.parallelStream().collect(new MySetToMapCollector<>());
+        System.out.println(map);
     }
 }
